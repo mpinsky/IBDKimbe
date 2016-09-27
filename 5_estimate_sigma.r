@@ -45,12 +45,3 @@ s4 <- sigmaFrom_m(De=D4$De, Des=D4$Des, m=m, mse=mse, dims=1)
 s4$sigma_point
 summarizeSigmas(sigmas=s4$sigmas, sg=3)
 
-
-
-
-
-
-
-
-
-
