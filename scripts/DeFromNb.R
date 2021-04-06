@@ -1,5 +1,5 @@
 # Calculate sigma (dispersal kernel spread) from number of breeders (Nb)
-# Uses Waples et al. 2013 PRSB/Waples et al. 2014 Genetics correction for Nb to Ne
+# Uses Waples et al. 2013 PRSB/Waples et al. 2014 Genetics correction for Nb to Ne (doi: 10.1534/genetics.114.164822)
 #
 # niter: number of iterations to produce
 # AL: adult lifespan (years)
@@ -18,7 +18,7 @@ DeFromNb <- function(niter, AL, alpha, Waples_Nb, Waples_Nbl95, Waples_Nbu95, A)
 	mod = lm(NbNe ~ logRLAM, data=dat) # fit model
 
 	# Get CIs and samples for our Nb/Ne ratio (using AL and alpha)
-	NbNe = predict(mod, new=data.frame(logRLAM = log10(AL/alpha)), interval='prediction', level=0.95) # get the 95%CI prediction intervals
+	NbNe = predict(mod, new=data.frame(logRLAM = log10(AL/alpha)), interval='prediction', level=0.95) # get the 95%CI prediction intervals. This uses log10 to match the example calculations in the first full paragraph in the left column of p. 775 in Waples et al. 2014 Genetics
 	a = c(NbNe[,1] - NbNe[,2], NbNe[,3] - NbNe[,1]) # the CI intervals
 	NbNes1 = rnorm(niter, mean = NbNe[,1], sd = mean(a)/1.96) # generate first set of Nb/Ne samples
 	NbNes2 = rnorm(niter, mean = NbNe[,1], sd = mean(a)/1.96) # generate second set (need two draws since used 2x in equation)
