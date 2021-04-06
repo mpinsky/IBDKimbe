@@ -1,5 +1,5 @@
 # IBDtools
-Data and scripts for isolation by distance analyses, Pinsky et al. in review
+Data and scripts for isolation by distance analyses, Pinsky et al. 2017 Current Biology 27(1): 149-154 doi: [10.1016/j.cub.2016.10.053](http://dx.doi.org/10.1016/j.cub.2016.10.053)
 
 Basic structure:
 * /data: The data from the paper 
